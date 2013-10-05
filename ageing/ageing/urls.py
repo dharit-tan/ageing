@@ -1,10 +1,13 @@
 from django.conf.urls import patterns, include, url
+from ageing.views import *
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+	url(r'^home$', home, name='home'),
+	url(r'^$', home, name='home'),
     # Examples:
     # url(r'^$', 'ageing.views.home', name='home'),
     # url(r'^ageing/', include('ageing.foo.urls')),
