@@ -27,6 +27,7 @@
 		<input type="text" id="birth_month">
 		<input type="text" id="birth_year">
 		<button id="go" class="btn">GO</button>
+		<button id="test" class="btn">TEST</button>
 
 	<p>You've been alive for:
 		<ul>
@@ -38,7 +39,8 @@
 
 	<script type="text/paperscript" canvas="myCanvas">
 		// The amount of circles we want to make:
-		var count = 70 * 12;
+		var count = 70;
+		var oldcount = count;
 
 		/*------------------------------------------------------------------------------*/
 		// the go button
@@ -66,6 +68,10 @@
 			$('#days').text(days + " days");
 		});
 
+		$('#test').click(function() {
+			count = count - 10;
+		});
+
 		/*------------------------------------------------------------------------------*/
 		// Paper.js animations
 
@@ -91,17 +97,24 @@
 		function onFrame(event) {
 			// Run through the active layer's children list and change
 			// the position of the placed symbols:
-			for (var i = 0; i < count; i++) {
-				var item = project.activeLayer.children[i];
-				
-				// Move the item 1/20th of its width to the right. This way
-				// larger circles move faster than smaller circles:
-				item.position.x += item.bounds.width / 20;
 
-				// If the item has left the view on the right, move it back
-				// to the left:
-				if (item.bounds.left > view.size.width) {
-					item.position.x = -item.bounds.width;
+			for (var i = 0; i < oldcount; i++) {		
+				var item = project.activeLayer.children[i];
+				if (oldcount != count && i >= count)
+				{
+					item.remove();
+				}
+				else 
+				{
+					// Move the item 1/20th of its width to the right. This way
+					// larger circles move faster than smaller circles:
+					item.position.x += item.bounds.width / 20;
+
+					// If the item has left the view on the right, move it back
+					// to the left:
+					if (item.bounds.left > view.size.width) {
+						item.position.x = -item.bounds.width;
+					}
 				}
 			}
 		}
