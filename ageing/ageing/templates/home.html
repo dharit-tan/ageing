@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Ageing</title>
+</head>
+
+<body>
+	<p>Enter your birthday:</p>
+		<input type="text" id="birth_day">
+		<input type="text" id="birth_month">
+		<input type="text" id="birth_year">
+		<button id="go">GO</button>
+
+	<p>You've been alive for:
+		<ul>
+			<li id="years"></li>
+			<li id="months"></li>
+			<li id="days"></li>
+		</ul>
+	</p>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+	$('#go').click(function() {
+		var delta;
+		var today = new Date();
+		today.setHours(0);
+		today.setMinutes(0);
+		today.setSeconds(0);
+		today.setMilliseconds(0);
+
+		var birth_day = $('#birth_day').val();
+		var birth_month = $('#birth_month').val() - 1;
+		var birth_year = $('#birth_year').val();
+
+		var birth_date = new Date(birth_year, birth_month, birth_day, 0, 0, 0);
+
+		delta = today - birth_date;
+
+		$('#years').text(delta / 1000 / 60 / 60 / 24 / 30 / 12 + " years");
+		$('#months').text(delta / 1000 / 60 / 60 / 24 / 30 + " months");
+		$('#days').text(delta / 1000 / 60 / 60 / 24 + " days");
+	});
+
+	</script>
+
+</body>
+</html>
