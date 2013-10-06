@@ -54,6 +54,7 @@
 		modA[10] = $('#d8');
 
 
+
 		var delay1 = 1000;
 
 		function s1() { timeoutModal(modA[1], s8, delay1); };
@@ -68,7 +69,9 @@
 		function s8() { timeoutModal(modA[8], s9, delay1); };
 
 		function s9() { timeoutModal(modA[9], s10, delay1); };
-		function s10() { timeoutModal(modA[10], null, delay1); };
+		function s10() { timeoutModal(modA[10], s11, delay1); };
+		function s11() { noTimeoutModal($('#q2')); };
+		function s12() { timeoutModal($('#a2'), null, delay1); };
 
 		s1();
 
@@ -112,10 +115,36 @@
 
 		});
 
-		$('.recalculate').click(function() {
-			var t = sleep_time | work_time | bath_time;
-			console.log(t);
-		})
+
+		$('#sleepButton').click(function() {
+			var s = $('#sleep_time').val() * 30;
+			for (var i = count - s; i < count; i++) {
+				var item = project.activeLayer.children[i];
+				item.visible = false;
+			}
+			alert();
+			count = count - s;
+			$('#q2').modal('hide');
+			s12();
+		});
+
+		// $('#workButton').click(function() {
+		// 	var s = $('#work_time').value * 7 * 30;
+		// 	for (var i = count - s; i < count; i++) {
+		// 		var item = project.activeLayer.children[i];
+		// 		item.visible = false;
+		// 	}
+		// 	count = count - s;
+		// });
+
+		// $('#bathroomButton').click(function() {
+		// 	var s = $('#bathroom_time').value * 7 * 30;
+		// 	for (var i = count - s; i < count; i++) {
+		// 		var item = project.activeLayer.children[i];
+		// 		item.visible = false;
+		// 	}
+		// 	count = count - s;
+		// });
 
 		/*------------------------------------------------------------------------------*/
 		// Paper.js animations
@@ -248,12 +277,19 @@
       </div>
     </div>
 
+    <!-- A2 -->
+    <div id="a2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:transparent">
+      <div class="modal-body">
+		<p>WELL SHIT</p>
+      </div>
+    </div>
+
     <div id="q2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:transparent">
       <div class="modal-body">
 		<div class="modal-body">
 		<p>How much time do you spend sleeping per day?</p>
-      	<input style="color:white;" type="text" id="sleep_time" value="20">
-		<button id="sleepButton" class="btn recalculate">GO</button>
+      	<input type="text" id="sleep_time" value="2">
+		<button id="sleepButton" class="btn">GO</button>
       </div>
       </div>
     </div>
@@ -262,8 +298,8 @@
       <div class="modal-body">
 		<div class="modal-body">
 		<p>How much time do you spend working per day?</p>
-      	<input style="color:white;" type="text" id="work_time" value="20">
-		<button id="workButton" class="btn recalculate">GO</button>
+      	<input type="text" id="work_time" value="2">
+		<button id="workButton" class="btn">GO</button>
       </div>
       </div>
     </div>
@@ -272,8 +308,8 @@
       <div class="modal-body">
 		<div class="modal-body">
 		<p>How much time do you spend in the bathroom per day?</p>
-      	<input style="color:white;" type="text" id="clean_time" value="20">
-		<button id="bathroomButton" class="btn recalculate">GO</button>
+      	<input type="text" id="bathroom_time" value="2">
+		<button id="bathroomButton" class="btn">GO</button>
       </div>
       </div>
     </div>
