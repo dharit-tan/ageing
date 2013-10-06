@@ -2,10 +2,9 @@
 <html>
 <head>
 	<title>Ageing</title>
-
-	{% load staticfiles %}
 	<!-- Bootstrap -->
-	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	{% load staticfiles %}
+    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.9/paper.js"></script>
 
@@ -23,10 +22,11 @@
 	</canvas>
 
 	<p style="z-index:100;">Enter your birthday:</p>
-		<input type="text" id="birth_day">
-		<input type="text" id="birth_month">
-		<input type="text" id="birth_year">
+		<input type="text" id="birth_day" value="20">
+		<input type="text" id="birth_month" value="4">
+		<input type="text" id="birth_year" value="1992">
 		<button id="go" class="btn">GO</button>
+		<button id="test" class="btn" href="#aboutModal" data-toggle="modal">Test</button>		
 
 	<p>You've been alive for:
 		<ul>
@@ -58,13 +58,24 @@
 
 			delta = today - birth_date;
 			var days = delta / 1000 / 60 / 60 / 24;
-			var months = days / 30;
+			var months = Math.round(days / 30);
 			var years = months / 12;
 
 			$('#years').text(years + " years");
 			$('#months').text(months + " months");
 			$('#days').text(days + " days");
+
+			for (var i = count - months; i < count; i++) {
+				var item = project.activeLayer.children[i];
+				item.visible = false;
+			}
+			count = count - months;
 		});
+
+		$('#test').click(function() {
+
+		});
+
 
 		/*------------------------------------------------------------------------------*/
 		// Paper.js animations
@@ -106,5 +117,26 @@
 			}
 		}
 	</script>
+
+	<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+	<!-- About Modal -->
+    <div id="aboutModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">About</h3>
+      </div>
+      <div class="modal-body">
+        <p>
+          Princeton Lost and Found (PLF) is a TigerApp designed to make the return of missing items to members of the Princeton community as quick and painless as possible. This website is the property of the Princeton USG and was created by Sam Lichtenberg ’15, Matt Goldsmith ’15, Reed Tan ’15, and Deric Cheng ’15.
+        </p>
+        <p>
+          Listings on this website are subject to deletion after 90 days if they are unresolved within that time. Users are limited to 5 submissions per three days and 3 postings per three days to prevent spam.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+    </div>
+
 </body>
 </html>
