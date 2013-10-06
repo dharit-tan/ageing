@@ -37,6 +37,9 @@
 	</p>
 
 	<script type="text/paperscript" canvas="myCanvas">
+		// The amount of circles we want to make:
+		var count = 70 * 12;
+
 		/*------------------------------------------------------------------------------*/
 		// the go button
 		$('#go').click(function() {
@@ -62,9 +65,6 @@
 
 		/*------------------------------------------------------------------------------*/
 		// Paper.js animations
-
-		// The amount of circles we want to make:
-		var count = 70 * 12;
 
 		// Create a symbol, which we will use to place instances of later:
 		var path = new Path.Circle({
