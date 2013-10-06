@@ -6,13 +6,13 @@
 	{% load staticfiles %}
 	<!-- Bootstrap -->
 	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
-	{# <link href="http://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.9/paper.js" rel="stylesheet" media="screen"> #}
-
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.9/paper.js"></script>
 
 </head>
 
 <body>
-<canvas id="myCanvas" resize style="z-index:-1;"></canvas>
+<canvas id="myCanvas" resize style="z-index:-1;">
 
 	<p>Enter your birthday:</p>
 		<input type="text" id="birth_day">
@@ -27,8 +27,8 @@
 			<li id="days"></li>
 		</ul>
 	</p>
+</canvas>
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script>
 	$('#go').click(function() {
 		var delta;
@@ -53,7 +53,6 @@
 
 </script>
 
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.9/paper.js"></script>
 <script type="text/paperscript" canvas="myCanvas">
 // The amount of circles we want to make:
 var count = 150;
