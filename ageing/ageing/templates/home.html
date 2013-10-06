@@ -50,11 +50,13 @@
 		modA[6] = $('#d6');
 		modA[7] = $('#q1');
 		modA[8] = $('#a1');
+		modA[9] = $('#d7');
+		modA[10] = $('#d8');
 
 
 		var delay1 = 1000;
 
-		function s1() { timeoutModal(modA[1], s2, delay1); };
+		function s1() { timeoutModal(modA[1], s8, delay1); };
 		function s2() { timeoutModal(modA[2], s3, delay1); };
 		function s3() { timeoutModal(modA[3], s4, delay1); };
 		function s4() { timeoutModal(modA[4], s5, delay1); };
@@ -63,7 +65,10 @@
 
 
 		function s7() { noTimeoutModal(modA[7]); };
-		function s8() { timeoutModal(modA[8], null, delay1); };
+		function s8() { timeoutModal(modA[8], s9, delay1); };
+
+		function s9() { timeoutModal(modA[9], s10, delay1); };
+		function s10() { timeoutModal(modA[10], null, delay1); };
 
 		s1();
 
@@ -198,6 +203,24 @@
     <div id="d6" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:transparent">
       <div class="modal-body">
       	<p>Pretend, for a second, that your entire life is contained within this page of circles.</p>
+      </div>
+    </div>
+
+    <div id="d7" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:transparent">
+      <div class="modal-body">
+      	<p style="color:white;">This is you. This is every month you’ve slogged away in school, every hour you’ve spent in the bathroom, every day you’ve wasted procrastinating rather than finishing that final paper.</p>
+      </div>
+    </div>
+
+    <div id="d8" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:transparent">
+      <div class="modal-body">
+      	<p style="color:white;">This is everything you have left.</p>
+      </div>
+    </div>
+
+    <div id="d9" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:transparent">
+      <div class="modal-body">
+      	<p style="color:white;">Pretend, for a second, that your entire life is contained within this page of circles.</p>
       </div>
     </div>
 
