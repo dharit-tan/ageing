@@ -57,10 +57,13 @@
 			var birth_date = new Date(birth_year, birth_month, birth_day, 0, 0, 0);
 
 			delta = today - birth_date;
+			var days = delta / 1000 / 60 / 60 / 24;
+			var months = days / 30;
+			var years = months / 12;
 
-			$('#years').text(delta / 1000 / 60 / 60 / 24 / 30 / 12 + " years");
-			$('#months').text(delta / 1000 / 60 / 60 / 24 / 30 + " months");
-			$('#days').text(delta / 1000 / 60 / 60 / 24 + " days");
+			$('#years').text(years + " years");
+			$('#months').text(months + " months");
+			$('#days').text(days + " days");
 		});
 
 		/*------------------------------------------------------------------------------*/
