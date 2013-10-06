@@ -4,7 +4,7 @@
 	<title>Ageing</title>
 	<!-- Bootstrap -->
 	{% load staticfiles %}
-    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
+    <link href="{% static "bootstrap/css/bootstrapFucked.css" %}" rel="stylesheet" media="screen">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.9/paper.js"></script>
 
@@ -52,7 +52,7 @@
 		modA[8] = $('#a1');
 
 
-		var delay1 = 1000;
+		var delay1 = 5000;
 
 		function s1() { timeoutModal(modA[1], s2, delay1); };
 		function s2() { timeoutModal(modA[2], s3, delay1); };
@@ -154,72 +154,63 @@
 
 	<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 
-{# 	{% for modalName in modalContext %}
-		<div id="{% " class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	      <div class="modal-body">
-	      	<p>On the screen in front of you are exactly 938 little white circles.</p>
-	      </div>
-	    </div>
-    {% endfor %} #}
-
-
-	<!-- 1st Modal -->
-    <div id="d1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ 	<!-- 1st Modal -->
+    <div id="d1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:transparent">
       <div class="modal-body">
-      	<p>On the screen in front of you are exactly 938 little white circles.</p>
+      	<p style="color:white;">On the screen in front of you are exactly 938 little white circles.</p>
       </div>
     </div>
 
 	<!-- 2nd Modal -->
-    <div id="d2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="d2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:transparent">
       <div class="modal-body">
-      	<p>Some will be very large and will speed by quickly.</p>
+      	<p style="color:white;">Some will be very large and will speed by quickly.</p>
       </div>
     </div>
 
 	<!-- 3rd Modal -->
-    <div id="d3" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="d3" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:transparent">
       <div class="modal-body">
-      	<p>Some may be far away and difficult to see, but trust us, they're there.</p>
+      	<p style="color:white;">Some may be far away and difficult to see, but trust us, they're there.</p>
       </div>
     </div>
 
 	<!-- 4th Modal -->
-    <div id="d4" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="d4" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:transparent">
       <div class="modal-body">
-      	<p>There is one circle on this screen for every month that the average human being will live.</p>
+      	<p style="color:white;">There is one circle on this screen for every month that the average human being will live.</p>
       </div>
     </div>
 
 	<!-- 5th Modal -->
-    <div id="d5" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="d5" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:transparent">
       <div class="modal-body">
-      	<p>You might have more circles in your life, or you might have less, but on average, this is what we've got.</p>
+      	<p style="color:white;">You might have more circles in your life, or you might have less, but on average, this is what we've got.</p>
       	</div>
     </div>
 
 	<!-- 6th Modal -->
-    <div id="d6" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="d6" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:transparent">
       <div class="modal-body">
-      	<p>Pretend, for a second, that your entire life is contained within this page of circles.</p>
+      	<p style="color:white;">Pretend, for a second, that your entire life is contained within this page of circles.</p>
       </div>
-    </div>
+    </div> #}
 
 	<!-- 7th Modal -->
-    <div id="q1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="q1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:transparent">
       <div class="modal-body">
-		<p>What day were you born?</p>
-      	<input type="text" id="birth_day" value="20">
-		<input type="text" id="birth_month" value="4">
-		<input type="text" id="birth_year" value="1992">
+		<p style="color:white;">What day were you born?</p>
+      	<input style="color:white;" type="text" id="birth_day" value="20">
+		<input style="color:white;" type="text" id="birth_month" value="4">
+		<input style="color:white;" type="text" id="birth_year" value="1992">
 		<button id="ageButton" class="btn">GO</button>
       </div>
     </div>
 
 	<!-- 8th modal -->
-    <div id="a1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="a1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:transparent">
       <div class="modal-body">
-		<p>You've been alive for:
+		<p style="color:white;">You've been alive for:
 			<ul>
 				<li id="years"></li>
 				<li id="months"></li>
