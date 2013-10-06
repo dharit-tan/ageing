@@ -1,6 +1,14 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>Ageing</title>
+	<title>Ageing</title>
+
+	{% load staticfiles %}
+	<!-- Bootstrap -->
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.9/paper.js" rel="stylesheet" media="screen">
+
+
 </head>
 
 <body>
@@ -8,7 +16,7 @@
 		<input type="text" id="birth_day">
 		<input type="text" id="birth_month">
 		<input type="text" id="birth_year">
-		<button id="go">GO</button>
+		<button id="go" class="btn">GO</button>
 
 	<p>You've been alive for:
 		<ul>
