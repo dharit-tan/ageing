@@ -21,84 +21,58 @@
 	background:black;">
 	</canvas>
 
-
-
 	<script type="text/paperscript" canvas="myCanvas">
 
 	    function timeout(time) {
 	    	setTimeout(function() {}, time);
 	    };
 
-		function timeoutModal(name1, name2, time) {
+		function timeoutModal(name1, fn, time) {
 			name1.modal('show');
 			setTimeout(function() {
 				name1.modal('hide');
-				name2.modal('show');
+				fn();
 				}
 			, time);
 		};
 
+		function noTimeoutModal(name1) {
+			name1.modal('show');
+		};
 
-		var modArr = new Array();
-		modArr[0] = $('#ignore');
-		modArr[1] = $('#first');
-		modArr[2] = $('#second');
-		modArr[3] = $('#third');
-		modArr[4] = $('#fourth');
-		modArr[5] = $('#fifth');
-		modArr[6] = $('#sixth');
-		modArr[7] = $('#seventh');
-		modArr[8] = $('#eigth');
-
-		timeoutModal(modArr[1], modArr[2], 3000);
-		timeoutModal(modArr[2], modArr[3], 3000);
+		var modA = new Array();
+		modA[0] = $('#ignore');
+		modA[1] = $('#d1');
+		modA[2] = $('#d2');
+		modA[3] = $('#d3');
+		modA[4] = $('#d4');
+		modA[5] = $('#d5');
+		modA[6] = $('#d6');
+		modA[7] = $('#q1');
+		modA[8] = $('#a1');
 
 
-		// setTimeout(function() {
-		// 	$('#first').modal('hide');
-		// 	$('#second').modal('show');
-		// 	}
-		// ,3000);
-		// };
-		// // show the first modal
-		// $('#first').modal('show');
-		// setTimeout(function() {
-		// 	$('#first').modal('hide');
-		// 	$('#second').modal('show');
-		// 	}
-		// ,3000);
-		// setTimeout(function() {
-		// 	$('#second').modal('hide');
-		// 	$('#third').modal('show');
-		// 	}
-		// ,3000);
-		// setTimeout(function() {
-		// 	$('#third').modal('hide');
-		// 	$('#fourth').modal('show');
-		// 	}
-		// ,3000);
-		// setTimeout(function() {
-		// 	$('#fourth').modal('hide');
-		// 	$('#fifth').modal('show');
-		// 	}
-		// ,3000);
-		// setTimeout(function() {
-		// 	$('#fifth').modal('hide');
-		// 	$('#sixth').modal('show');
-		// 	}
-		// ,3000);
-		// setTimeout(function() {
-		// 	$('#sixth').modal('hide');
-		// 	$('#seventh').modal('show');
-		// 	}
-		// ,3000);
+		var delay1 = 1000;
+
+		function s1() { timeoutModal(modA[1], s2, delay1); };
+		function s2() { timeoutModal(modA[2], s3, delay1); };
+		function s3() { timeoutModal(modA[3], s4, delay1); };
+		function s4() { timeoutModal(modA[4], s5, delay1); };
+		function s5() { timeoutModal(modA[5], s6, delay1); };
+		function s6() { timeoutModal(modA[6], s7, delay1); };
+
+
+		function s7() { noTimeoutModal(modA[7]); };
+		function s8() { timeoutModal(modA[8], null, delay1); };
+
+		s1();
 
 		// The amount of circles we want to make:
-		var count = 70 * 12;
+		var count = 939;
 
 		/*------------------------------------------------------------------------------*/
 		// the go button
-		$('#go').click(function() {
+		$('#ageButton').click(function() {
 			var delta;
 			var today = new Date();
 			today.setHours(0);
@@ -128,14 +102,10 @@
 			count = count - months;
 
 			// hide the first modal and show the second modal
-			$('#first').modal('hide');
-			$('#second').modal('show');
-		});
-
-		$('#test').click(function() {
+			$('#q1').modal('hide');
+			s8();
 
 		});
-
 
 		/*------------------------------------------------------------------------------*/
 		// Paper.js animations
@@ -144,7 +114,7 @@
 		var path = new Path.Circle({
 			center: [0, 0],
 			radius: 10,
-			fillColor: 'white',
+			fillColor: 'f3e2a9',
 			strokeColor: 'black'
 		});
 
@@ -184,61 +154,70 @@
 
 	<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 
+{# 	{% for modalName in modalContext %}
+		<div id="{% " class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	      <div class="modal-body">
+	      	<p>On the screen in front of you are exactly 938 little white circles.</p>
+	      </div>
+	    </div>
+    {% endfor %} #}
+
+
 	<!-- 1st Modal -->
-    <div id="first" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="d1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-body">
       	<p>On the screen in front of you are exactly 938 little white circles.</p>
       </div>
     </div>
 
 	<!-- 2nd Modal -->
-    <div id="second" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="d2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-body">
-      	<p>Some are be very large and will speed by quickly.</p>
+      	<p>Some will be very large and will speed by quickly.</p>
       </div>
     </div>
 
 	<!-- 3rd Modal -->
-    <div id="third" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="d3" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-body">
       	<p>Some may be far away and difficult to see, but trust us, they're there.</p>
       </div>
     </div>
 
 	<!-- 4th Modal -->
-    <div id="fourth" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="d4" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-body">
-      	<p>There is one circle on this screen for every month that the aver human being will live.</p>
+      	<p>There is one circle on this screen for every month that the average human being will live.</p>
       </div>
     </div>
 
 	<!-- 5th Modal -->
-    <div id="fifth" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="d5" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-body">
       	<p>You might have more circles in your life, or you might have less, but on average, this is what we've got.</p>
       	</div>
     </div>
 
 	<!-- 6th Modal -->
-    <div id="sixth" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="d6" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-body">
       	<p>Pretend, for a second, that your entire life is contained within this page of circles.</p>
       </div>
     </div>
 
 	<!-- 7th Modal -->
-    <div id="seventh" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="q1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-body">
-		<p>On what day were you born?</p>
+		<p>What day were you born?</p>
       	<input type="text" id="birth_day" value="20">
 		<input type="text" id="birth_month" value="4">
 		<input type="text" id="birth_year" value="1992">
-		<button id="go" class="btn">GO</button>
+		<button id="ageButton" class="btn">GO</button>
       </div>
     </div>
 
 	<!-- 8th modal -->
-    <div id="eigth" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="a1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-body">
 		<p>You've been alive for:
 			<ul>
